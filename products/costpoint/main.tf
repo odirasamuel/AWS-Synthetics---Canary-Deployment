@@ -1,0 +1,30 @@
+module "gce_deltek_dv_fullpage_canary" {
+  source                 = "../../modules/deploy_canary"
+  aws_region             = "us-east-2"
+  environment            = "gce"
+  customer_name          = "deltek"
+  cluster                = "TEST01_DELTEKDEV"
+  isVip                  = false
+  classification         = "dv"
+  canary_type            = "fullpage"
+  endpoint               = "charlesotuya@deltek.com"
+  protocol               = "email"
+  unit                   = "Count"
+  stat                   = "Sum"
+  period                 = 600
+  namespace              = "CloudWatchSynthetics"
+  metric_name            = "Failed"
+  metric_query_id        = "dt_test1"
+  threshold              = 1
+  treat_missing_data     = "ignore"
+  evaluation_periods     = 1
+  datapoints_to_alarm    = 1
+  comparison_operator    = "GreaterThanOrEqualToThreshold"
+  alarm_description      = "Synthetic canary run failed"
+  location               = "US"
+  group                  = "clientA"
+  secret_name            = "canarytest"
+  start_canary           = true
+  create_cw_metric_alarm = true
+  product                = "costpoint"
+}
