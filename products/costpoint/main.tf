@@ -7,7 +7,7 @@ module "gce_deltek_dv_fullpage_canary" {
   isVip                  = false
   classification         = "dv"
   canary_type            = "fullpage"
-  endpoint               = "charlesotuya@deltek.com"
+  endpoint               = "endpoint"
   protocol               = "email"
   unit                   = "Count"
   stat                   = "Sum"
